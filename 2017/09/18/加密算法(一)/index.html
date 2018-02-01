@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.3" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="学习,加密算法,web前端," />
+
+
+<meta name="description" content="前言web前端这个概念其实是在近几年才突出出来！它的前身其实就是传说中的切图工(把UI出的图切出来放在对的地方就好)。前后端分离后, web前端要承当的是事情变的越来越多,代码量也越变越大。前端工程化,构建编译,加密… 近期在整理web前端用到的一些加密技术以及相关的工具。 对称加密算法 (DES、3DES、AES)1.简介1.1 定义对称加密算法是应用较早的加密算法，技术成熟。在对称加密算法中，">
+<meta name="keywords" content="学习,加密算法,web前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="加密算法(一) —— 对称加密">
+<meta property="og:url" content="http://yoursite.com/2017/09/18/加密算法(一)/index.html">
+<meta property="og:site_name" content="DDuke 小屋">
+<meta property="og:description" content="前言web前端这个概念其实是在近几年才突出出来！它的前身其实就是传说中的切图工(把UI出的图切出来放在对的地方就好)。前后端分离后, web前端要承当的是事情变的越来越多,代码量也越变越大。前端工程化,构建编译,加密… 近期在整理web前端用到的一些加密技术以及相关的工具。 对称加密算法 (DES、3DES、AES)1.简介1.1 定义对称加密算法是应用较早的加密算法，技术成熟。在对称加密算法中，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/des_ebc.jpg">
+<meta property="og:image" content="http://yoursite.com/images/des_cbc.jpg">
+<meta property="og:image" content="http://yoursite.com/images/des_cbc.jpg">
+<meta property="og:image" content="http://yoursite.com/images/des_ofb.jpg">
+<meta property="og:image" content="http://yoursite.com/images/des_ctr.jpg">
+<meta property="og:updated_time" content="2018-01-31T07:48:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="加密算法(一) —— 对称加密">
+<meta name="twitter:description" content="前言web前端这个概念其实是在近几年才突出出来！它的前身其实就是传说中的切图工(把UI出的图切出来放在对的地方就好)。前后端分离后, web前端要承当的是事情变的越来越多,代码量也越变越大。前端工程化,构建编译,加密… 近期在整理web前端用到的一些加密技术以及相关的工具。 对称加密算法 (DES、3DES、AES)1.简介1.1 定义对称加密算法是应用较早的加密算法，技术成熟。在对称加密算法中，">
+<meta name="twitter:image" content="http://yoursite.com/images/des_ebc.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/18/加密算法(一)/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>加密算法(一) —— 对称加密 | DDuke 小屋</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DDuke 小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/18/加密算法(一)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DDuke">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/logo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DDuke 小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">加密算法(一) —— 对称加密</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-18T11:11:18+08:00">2017-09-18</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>web前端这个概念其实是在近几年才突出出来！它的前身其实就是传说中的切图工(把UI出的图切出来放在对的地方就好)。前后端分离后, web前端要承当的是事情变的越来越多,代码量也越变越大。前端工程化,构建编译,加密…</p>
+<p>近期在整理web前端用到的一些加密技术以及相关的工具。</p>
+<h1 id="对称加密算法-DES、3DES、AES"><a href="#对称加密算法-DES、3DES、AES" class="headerlink" title="对称加密算法 (DES、3DES、AES)"></a>对称加密算法 (DES、3DES、AES)</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h3 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h3><p>对称加密算法是应用较早的加密算法，技术成熟。在对称加密算法中，数据发信方将明文（原始数据）和加密密钥（mi yue）一起经过特殊加密算法处理后，使其变成复杂的加密密文发送出去。收信方收到密文后，若想解读原文，则需要使用加密用过的密钥及相同算法的逆算法对密文进行解密，才能使其恢复成可读明文。在对称加密算法中，使用的密钥只有一个，发收信双方都使用这个密钥对数据进行加密和解密，这就要求解密方事先必须知道加密密钥。</p>
+<h3 id="1-2-优缺点"><a href="#1-2-优缺点" class="headerlink" title="1.2 优缺点"></a>1.2 优缺点</h3><blockquote>
+<p>优点：算法公开、计算量小、加密速度快、加密效率高。<br>缺点：<br>（1）交易双方都使用同样钥匙，安全性得不到保证。<br>（2）每对用户每次使用对称加密算法时，都需要使用其他人不知道的惟一钥匙，这会使得发收信双方所拥有的钥匙数量呈几何级数增长，密钥管理成为用户的负担。对称加密算法在分布式网络系统上使用较为困难，主要是因为密钥管理困难，使用成本较高。</p>
+<h3 id="1-3-常用对称加密算法"><a href="#1-3-常用对称加密算法" class="headerlink" title="1.3 常用对称加密算法"></a>1.3 常用对称加密算法</h3><p>基于“对称密钥”的加密算法主要有DES、3DES（TripleDES）、AES、RC2、RC4、RC5和Blowfish等。比较常用的对称加密算法基本上就 DES、3DES（TripleDES）和AES。</p>
+<p>DES（Data Encryption Standard）<br>3DES（DES加强版，使用3次DES计算，Triple DES，DESede）<br>AES（Advanced Encryption Standard，3DES加强版）</p>
+</blockquote>
+<h2 id="2-分组模式"><a href="#2-分组模式" class="headerlink" title="2.分组模式"></a>2.分组模式</h2><h3 id="2-1-EBC模式"><a href="#2-1-EBC模式" class="headerlink" title="2.1 EBC模式"></a>2.1 EBC模式</h3><p><img src="/images/des_ebc.jpg" alt=""></p>
+<blockquote>
+<p>优点：<br>1.简单；<br>2.有利于并行计算；<br>3.误差不会被传送；</p>
+<p>缺点：<br>1.不能隐藏明文的模式；<br>2.可能对明文进行主动攻击。</p>
+</blockquote>
+<h3 id="2-2-EBC模式-——-密码分组链接模式"><a href="#2-2-EBC模式-——-密码分组链接模式" class="headerlink" title="2.2 EBC模式 —— 密码分组链接模式"></a>2.2 EBC模式 —— 密码分组链接模式</h3><p><img src="/images/des_cbc.jpg" alt=""></p>
+<blockquote>
+<p>优点：<br>1.不容易主动攻击,安全性好于ECB,适合传输长度长的报文,是SSL、IPSec的标准。</p>
+<p>缺点：<br>1、不利于并行计算；<br>2、误差传递；<br>3、需要初始化向量IV。</p>
+</blockquote>
+<h3 id="2-3-CFB模式-——-密码发反馈模式"><a href="#2-3-CFB模式-——-密码发反馈模式" class="headerlink" title="2.3 CFB模式 —— 密码发反馈模式"></a>2.3 CFB模式 —— 密码发反馈模式</h3><p><img src="/images/des_cbc.jpg" alt=""></p>
+<blockquote>
+<p>优点：<br>1、隐藏了明文模式；<br>2、分组密码转化为流模式；<br>3、可以及时加密传送小于分组的数据。</p>
+<p>缺点:<br>1、不利于并行计算；<br>2、误差传送：一个明文单元损坏影响多个单元；<br>3、唯一的IV。</p>
+</blockquote>
+<h3 id="2-4-OFB模式-——-输出反馈模式"><a href="#2-4-OFB模式-——-输出反馈模式" class="headerlink" title="2.4 OFB模式 —— 输出反馈模式"></a>2.4 OFB模式 —— 输出反馈模式</h3><p><img src="/images/des_ofb.jpg" alt=""></p>
+<blockquote>
+<p>优点：<br>1、隐藏了明文模式；<br>2、分组密码转化为流模式；<br>3、可以及时加密传送小于分组的数据。</p>
+<p>缺点：<br>1、不利于并行计算；<br>2、对明文的主动攻击是可能的；<br>3、误差传送：一个明文单元损坏影响多个单元。</p>
+</blockquote>
+<h3 id="2-5-CTR模式"><a href="#2-5-CTR模式" class="headerlink" title="2.5 CTR模式"></a>2.5 CTR模式</h3><blockquote>
+<p>计数模式（CTR模式）加密是对一系列输入数据块(称为计数)进行加密，产生一系列的输出块，输出块与明文异或得到密文。对于最后的数据块，可能是长u位的局部数据块，这u位就将用于异或操作，而剩下的b-u位将被丢弃（b表示块的长度）。CTR解密类似。这一系列的计数必须互不相同的。假定计数表示为T1, T2, …, Tn。CTR模式可定义如下：</p>
+<p>CTR加密公式如下：<br>Cj = Pj XOR Ek(Tj)<br>C<em>n = P</em>n XOR MSBu(Ek(Tn)) j = 1，2… n-1;</p>
+<p>CTR解密公式如下：<br>Pj = Cj XOR Ek(Tj)<br>P<em>n = C</em>n XOR MSBu(Ek(Tn)) j = 1，2 … n-1;</p>
+</blockquote>
+<p>AES CTR模式的结构如下图所示<br><img src="/images/des_ctr.jpg" alt=""></p>
+<blockquote>
+<p>加密方式：密码算法产生一个16 字节的伪随机码块流，伪随机码块与输入的明文进行异或运算后产生密文输出。密文与同样的伪随机码进行异或运算后可以重产生明文。</p>
+<p>CTR 模式被广泛用于 ATM 网络安全和 IPSec应用中，相对于其它模式而言，CRT模式具有如下特点：<br>硬件效率：允许同时处理多块明文 / 密文。<br>软件效率：允许并行计算，可以很好地利用 CPU 流水等并行技术。<br>预处理：算法和加密盒的输出不依靠明文和密文的输入，因此如果有足够的保证安全的存储器，加密算法将仅仅是一系列异或运算，这将极大地提高吞吐量。<br>随机访问：第 i 块密文的解密不依赖于第 i-1 块密文，提供很高的随机访问能力<br>可证明的安全性：能够证明 CTR 至少和其他模式一样安全（CBC, CFB, OFB, …）<br>简单性：与其它模式不同，CTR模式仅要求实现加密算法，但不要求实现解密算法。对于 AES 等加/解密本质上不同的算法来说，这种简化是巨大的。<br>无填充，可以高效地作为流式加密使用。</p>
+</blockquote>
+<h2 id="3-填充模式"><a href="#3-填充模式" class="headerlink" title="3.填充模式"></a>3.填充模式</h2><p>进行DES、3DES和AES三种对称加密算法时，常采用的是NoPadding（不填充）、Zeros填充（0填充）、PKCS7Padding填充。</p>
+<h3 id="3-1-ZeroPadding"><a href="#3-1-ZeroPadding" class="headerlink" title="3.1 ZeroPadding"></a>3.1 ZeroPadding</h3><blockquote>
+<p>全部填充为0的字节，结果如下：<br>F1 F2 F3 F4 F5 F6 F7 F8   //第一块<br>F9 00 00 00 00 00 00 00 //第二块</p>
+</blockquote>
+<h3 id="3-2-PKCS7Padding"><a href="#3-2-PKCS7Padding" class="headerlink" title="3.2 PKCS7Padding"></a>3.2 PKCS7Padding</h3><blockquote>
+<p>每个填充的字节都记录了填充的总字节数，结果如下：<br>F1 F2 F3 F4 F5 F6 F7 F8   //第一块<br>F9 07 07 07 07 07 07 07 //第二块</p>
+</blockquote>
+<h1 id="web前端实例-——-crypto-js"><a href="#web前端实例-——-crypto-js" class="headerlink" title="web前端实例 —— crypto-js"></a>web前端实例 —— crypto-js</h1><p>没看错 就是web前端！ 本实例使用的 crypto-js。<br>安装 crypto-js 是的简单</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install crypto-js -S</span><br><span class="line">// 或者</span><br><span class="line">yarn add crypto-js</span><br></pre></td></tr></table></figure>
+<h2 id="实例-——-Triple-DES"><a href="#实例-——-Triple-DES" class="headerlink" title="实例 —— Triple DES"></a>实例 —— Triple DES</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import CryptoJS from &apos;crypto-js&apos;</span><br><span class="line">var str = &apos;123456&apos;</span><br><span class="line">var key = &apos;0123456789abcdef&apos;</span><br><span class="line">var iv = &apos;0123456789abcdef&apos;</span><br><span class="line"> </span><br><span class="line">key = CryptoJS.enc.Utf8.parse(key)</span><br><span class="line">iv = CryptoJS.enc.Utf8.parse(iv)</span><br><span class="line"> </span><br><span class="line">// DES 加密</span><br><span class="line">var encrypted = CryptoJS.DES.encrypt(str, key, &#123;</span><br><span class="line">    iv: iv,</span><br><span class="line">    mode: CryptoJS.mode.CBC,</span><br><span class="line">    padding: CryptoJS.pad.Pkcs7</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">// 转换为字符串</span><br><span class="line">encrypted = encrypted.toString()</span><br><span class="line"> </span><br><span class="line">// DES 解密</span><br><span class="line">var decrypted = CryptoJS.DES.decrypt(encrypted, key, &#123;</span><br><span class="line">    iv: iv,</span><br><span class="line">    mode: CryptoJS.mode.CBC,</span><br><span class="line">    padding: CryptoJS.pad.Pkcs7</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">// 转换为 utf8 字符串</span><br><span class="line">decrypted = CryptoJS.enc.Utf8.stringify(decrypted)</span><br><span class="line"> </span><br><span class="line">// Triple DES 加密</span><br><span class="line">var encrypted = CryptoJS.TripleDES.encrypt(str, key, &#123;</span><br><span class="line">    iv: iv,</span><br><span class="line">    mode: CryptoJS.mode.CBC,</span><br><span class="line">    padding: CryptoJS.pad.Pkcs7</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">// 转换为字符串</span><br><span class="line">encrypted = encrypted.toString()</span><br><span class="line"> </span><br><span class="line">// Triple DES 解密</span><br><span class="line">var decrypted = CryptoJS.TripleDES.decrypt(encrypted, key, &#123;</span><br><span class="line">    iv: iv,</span><br><span class="line">    mode: CryptoJS.mode.CBC,</span><br><span class="line">    padding: CryptoJS.pad.Pkcs7</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">// 转换为 utf8 字符串</span><br><span class="line">decrypted = CryptoJS.enc.Utf8.stringify(decrypted)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+            <a href="/tags/加密算法/" rel="tag"># 加密算法</a>
+          
+            <a href="/tags/web前端/" rel="tag"># web前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/06/为了以后的自己能偷懒/" rel="next" title="为了以后的自己能偷懒">
+                <i class="fa fa-chevron-left"></i> 为了以后的自己能偷懒
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/31/失败经验总结/" rel="prev" title="失败经验总结">
+                失败经验总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/logo.png"
+                alt="DDuke" />
+            
+              <p class="site-author-name" itemprop="name">DDuke</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对称加密算法-DES、3DES、AES"><span class="nav-number">2.</span> <span class="nav-text">对称加密算法 (DES、3DES、AES)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-简介"><span class="nav-number">2.1.</span> <span class="nav-text">1.简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-定义"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-优缺点"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-常用对称加密算法"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 常用对称加密算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-分组模式"><span class="nav-number">2.2.</span> <span class="nav-text">2.分组模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-EBC模式"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 EBC模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-EBC模式-——-密码分组链接模式"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 EBC模式 —— 密码分组链接模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-CFB模式-——-密码发反馈模式"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 CFB模式 —— 密码发反馈模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-OFB模式-——-输出反馈模式"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.4 OFB模式 —— 输出反馈模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-CTR模式"><span class="nav-number">2.2.5.</span> <span class="nav-text">2.5 CTR模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-填充模式"><span class="nav-number">2.3.</span> <span class="nav-text">3.填充模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-ZeroPadding"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1 ZeroPadding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-PKCS7Padding"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.2 PKCS7Padding</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web前端实例-——-crypto-js"><span class="nav-number">3.</span> <span class="nav-text">web前端实例 —— crypto-js</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-——-Triple-DES"><span class="nav-number">3.1.</span> <span class="nav-text">实例 —— Triple DES</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DDuke</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.3"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
