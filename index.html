@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -75,7 +75,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '6.0.3',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
@@ -107,7 +107,7 @@
 <meta property="og:title" content="DDuke 小屋">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="DDuke 小屋">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DDuke 小屋">
 
@@ -165,7 +165,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -211,32 +211,63 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
         </li>
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -302,9 +333,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-01T12:49:02+08:00">2018-02-01</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T12:49:02+08:00">2018-02-01</time>
             
 
             
@@ -322,7 +353,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
@@ -361,8 +392,18 @@
       
         
           
-            <h1 id="Vue的整体机制"><a href="#Vue的整体机制" class="headerlink" title="Vue的整体机制"></a>Vue的整体机制</h1>
+          Vue的整体机制
+沈辉测试
+
+
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/01/vue相关知识点/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -440,9 +481,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-31T15:50:51+08:00">2018-01-31</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T15:50:51+08:00">2018-01-31</time>
             
 
             
@@ -460,7 +501,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
@@ -499,35 +540,17 @@
       
         
           
-            <h1 id="下次每次电话面试都记得录音-···"><a href="#下次每次电话面试都记得录音-···" class="headerlink" title="下次每次电话面试都记得录音 ···"></a>下次每次电话面试都记得录音 ···</h1><p>一直觉得阿里的前端是前端这边的标杆。希望能以阿里的前端为标准要求自己，自己进步并跟上步伐。<br>最近一次阿里的面试是目前数次阿里面试中，面试次数最多的一次，也发现了更多自己的不足。</p>
-<h1 id="面试经历"><a href="#面试经历" class="headerlink" title="面试经历"></a>面试经历</h1><h2 id="一面（电话面）"><a href="#一面（电话面）" class="headerlink" title="一面（电话面）"></a>一面（电话面）</h2><p>聊了不少，半个小时左右。</p>
-<p>1.vue-router实现原理<br>2.vuex实现原理<br>3.浏览器渲染机制<br>4.各个浏览器内核以及兼容问题<br>5.移动端适配</p>
-<h2 id="二面（现场面）"><a href="#二面（现场面）" class="headerlink" title="二面（现场面）"></a>二面（现场面）</h2><p>二面的时候比较轻松</p>
-<p>1.为什么用vue<br>2.遇到难点<br>3.自己满意的点<br>4.weex</p>
-<h2 id="三面（电话面）——-跪了"><a href="#三面（电话面）——-跪了" class="headerlink" title="三面（电话面）—— 跪了"></a>三面（电话面）—— 跪了</h2><p>三面的时候十分紧张,脑袋有点秀逗</p>
-<p>vue相关</p>
-<p>1.Vue双向绑定原理<br>2.vue-router实现原理<br>3.vue list中 子元素 绑定事件<br>4.vue中列表 下一页之后返回上一页是否重新加载视图</p>
-<p>weex相关<br>1.weex实现基本原理<br>2.weex的不足<br>3.weex中的渲染机制</p>
-<p>JS/css</p>
-<p>1.点击事件 浏览器兼容问题<br>2.移动事件 ontouchmove 以及优化 </p>
-<blockquote>
-<p>事件节流<br>比如首先生成一个 独立 重绘的BFC渲染层。然后通过 CSS的相关动画来 控制dom的移动而不是通过JS直接修改 DOM 的位置。在往下就是 通过requestAnimationFrame来优化渲染</p>
-</blockquote>
-<p>3.动画卡顿的问题</p>
-<p>4.翻页动效 实现</p>
-<p>其他<br>1.最新信息/技术 获取以及了解<br>2.自己的优势<br>3.不用框架 你做过什么<br>4.webpack  loader 与 plugin</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li>[x] 1.深入了解下Vue的相关原理以及实现(vue, vue-router, vuex)</li>
-<li>[ ] 2.自己写一个简单MVVM框架</li>
-<li>[ ]3.Webpack相关的知识点再复习一遍</li>
-<li>[ ]4.自己着手写一下 loader 以及 plugin</li>
-<li>[ ]5.浏览器渲染机制</li>
-<li>[ ]6.css3动画</li>
-<li>[ ]7.weex相关的原理以及实现 再加最新信息</li>
-<li>[ ]8.总结优势</li>
-</ul>
-
-          
+          下次每次电话面试都记得录音 ···一直觉得阿里的前端是前端这边的标杆。希望能以阿里的前端为标准要求自己，自己进步并跟上步伐。最近一次阿里的面试是目前数次阿里面试中，面试次数最多的一次，也发现了更多自己的不足。
+面试经历一面（电话面）聊了不少，半个小时左右。
+1.vue-router实现原理2.vue
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/31/失败经验总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -605,9 +628,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-18T11:11:18+08:00">2017-09-18</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-18T11:11:18+08:00">2017-09-18</time>
             
 
             
@@ -625,7 +648,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
@@ -664,55 +687,17 @@
       
         
           
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>web前端这个概念其实是在近几年才突出出来！它的前身其实就是传说中的切图工(把UI出的图切出来放在对的地方就好)。前后端分离后, web前端要承当的是事情变的越来越多,代码量也越变越大。前端工程化,构建编译,加密…</p>
-<p>近期在整理web前端用到的一些加密技术以及相关的工具。</p>
-<h1 id="对称加密算法-DES、3DES、AES"><a href="#对称加密算法-DES、3DES、AES" class="headerlink" title="对称加密算法 (DES、3DES、AES)"></a>对称加密算法 (DES、3DES、AES)</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><h3 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h3><p>对称加密算法是应用较早的加密算法，技术成熟。在对称加密算法中，数据发信方将明文（原始数据）和加密密钥（mi yue）一起经过特殊加密算法处理后，使其变成复杂的加密密文发送出去。收信方收到密文后，若想解读原文，则需要使用加密用过的密钥及相同算法的逆算法对密文进行解密，才能使其恢复成可读明文。在对称加密算法中，使用的密钥只有一个，发收信双方都使用这个密钥对数据进行加密和解密，这就要求解密方事先必须知道加密密钥。</p>
-<h3 id="1-2-优缺点"><a href="#1-2-优缺点" class="headerlink" title="1.2 优缺点"></a>1.2 优缺点</h3><blockquote>
-<p>优点：算法公开、计算量小、加密速度快、加密效率高。<br>缺点：<br>（1）交易双方都使用同样钥匙，安全性得不到保证。<br>（2）每对用户每次使用对称加密算法时，都需要使用其他人不知道的惟一钥匙，这会使得发收信双方所拥有的钥匙数量呈几何级数增长，密钥管理成为用户的负担。对称加密算法在分布式网络系统上使用较为困难，主要是因为密钥管理困难，使用成本较高。</p>
-<h3 id="1-3-常用对称加密算法"><a href="#1-3-常用对称加密算法" class="headerlink" title="1.3 常用对称加密算法"></a>1.3 常用对称加密算法</h3><p>基于“对称密钥”的加密算法主要有DES、3DES（TripleDES）、AES、RC2、RC4、RC5和Blowfish等。比较常用的对称加密算法基本上就 DES、3DES（TripleDES）和AES。</p>
-<p>DES（Data Encryption Standard）<br>3DES（DES加强版，使用3次DES计算，Triple DES，DESede）<br>AES（Advanced Encryption Standard，3DES加强版）</p>
-</blockquote>
-<h2 id="2-分组模式"><a href="#2-分组模式" class="headerlink" title="2.分组模式"></a>2.分组模式</h2><h3 id="2-1-EBC模式"><a href="#2-1-EBC模式" class="headerlink" title="2.1 EBC模式"></a>2.1 EBC模式</h3><p><img src="/images/des_ebc.jpg" alt=""></p>
-<blockquote>
-<p>优点：<br>1.简单；<br>2.有利于并行计算；<br>3.误差不会被传送；</p>
-<p>缺点：<br>1.不能隐藏明文的模式；<br>2.可能对明文进行主动攻击。</p>
-</blockquote>
-<h3 id="2-2-EBC模式-——-密码分组链接模式"><a href="#2-2-EBC模式-——-密码分组链接模式" class="headerlink" title="2.2 EBC模式 —— 密码分组链接模式"></a>2.2 EBC模式 —— 密码分组链接模式</h3><p><img src="/images/des_cbc.jpg" alt=""></p>
-<blockquote>
-<p>优点：<br>1.不容易主动攻击,安全性好于ECB,适合传输长度长的报文,是SSL、IPSec的标准。</p>
-<p>缺点：<br>1、不利于并行计算；<br>2、误差传递；<br>3、需要初始化向量IV。</p>
-</blockquote>
-<h3 id="2-3-CFB模式-——-密码发反馈模式"><a href="#2-3-CFB模式-——-密码发反馈模式" class="headerlink" title="2.3 CFB模式 —— 密码发反馈模式"></a>2.3 CFB模式 —— 密码发反馈模式</h3><p><img src="/images/des_cbc.jpg" alt=""></p>
-<blockquote>
-<p>优点：<br>1、隐藏了明文模式；<br>2、分组密码转化为流模式；<br>3、可以及时加密传送小于分组的数据。</p>
-<p>缺点:<br>1、不利于并行计算；<br>2、误差传送：一个明文单元损坏影响多个单元；<br>3、唯一的IV。</p>
-</blockquote>
-<h3 id="2-4-OFB模式-——-输出反馈模式"><a href="#2-4-OFB模式-——-输出反馈模式" class="headerlink" title="2.4 OFB模式 —— 输出反馈模式"></a>2.4 OFB模式 —— 输出反馈模式</h3><p><img src="/images/des_ofb.jpg" alt=""></p>
-<blockquote>
-<p>优点：<br>1、隐藏了明文模式；<br>2、分组密码转化为流模式；<br>3、可以及时加密传送小于分组的数据。</p>
-<p>缺点：<br>1、不利于并行计算；<br>2、对明文的主动攻击是可能的；<br>3、误差传送：一个明文单元损坏影响多个单元。</p>
-</blockquote>
-<h3 id="2-5-CTR模式"><a href="#2-5-CTR模式" class="headerlink" title="2.5 CTR模式"></a>2.5 CTR模式</h3><blockquote>
-<p>计数模式（CTR模式）加密是对一系列输入数据块(称为计数)进行加密，产生一系列的输出块，输出块与明文异或得到密文。对于最后的数据块，可能是长u位的局部数据块，这u位就将用于异或操作，而剩下的b-u位将被丢弃（b表示块的长度）。CTR解密类似。这一系列的计数必须互不相同的。假定计数表示为T1, T2, …, Tn。CTR模式可定义如下：</p>
-<p>CTR加密公式如下：<br>Cj = Pj XOR Ek(Tj)<br>C<em>n = P</em>n XOR MSBu(Ek(Tn)) j = 1，2… n-1;</p>
-<p>CTR解密公式如下：<br>Pj = Cj XOR Ek(Tj)<br>P<em>n = C</em>n XOR MSBu(Ek(Tn)) j = 1，2 … n-1;</p>
-</blockquote>
-<p>AES CTR模式的结构如下图所示<br><img src="/images/des_ctr.jpg" alt=""></p>
-<blockquote>
-<p>加密方式：密码算法产生一个16 字节的伪随机码块流，伪随机码块与输入的明文进行异或运算后产生密文输出。密文与同样的伪随机码进行异或运算后可以重产生明文。</p>
-<p>CTR 模式被广泛用于 ATM 网络安全和 IPSec应用中，相对于其它模式而言，CRT模式具有如下特点：<br>硬件效率：允许同时处理多块明文 / 密文。<br>软件效率：允许并行计算，可以很好地利用 CPU 流水等并行技术。<br>预处理：算法和加密盒的输出不依靠明文和密文的输入，因此如果有足够的保证安全的存储器，加密算法将仅仅是一系列异或运算，这将极大地提高吞吐量。<br>随机访问：第 i 块密文的解密不依赖于第 i-1 块密文，提供很高的随机访问能力<br>可证明的安全性：能够证明 CTR 至少和其他模式一样安全（CBC, CFB, OFB, …）<br>简单性：与其它模式不同，CTR模式仅要求实现加密算法，但不要求实现解密算法。对于 AES 等加/解密本质上不同的算法来说，这种简化是巨大的。<br>无填充，可以高效地作为流式加密使用。</p>
-</blockquote>
-<h2 id="3-填充模式"><a href="#3-填充模式" class="headerlink" title="3.填充模式"></a>3.填充模式</h2><p>进行DES、3DES和AES三种对称加密算法时，常采用的是NoPadding（不填充）、Zeros填充（0填充）、PKCS7Padding填充。</p>
-<h3 id="3-1-ZeroPadding"><a href="#3-1-ZeroPadding" class="headerlink" title="3.1 ZeroPadding"></a>3.1 ZeroPadding</h3><blockquote>
-<p>全部填充为0的字节，结果如下：<br>F1 F2 F3 F4 F5 F6 F7 F8   //第一块<br>F9 00 00 00 00 00 00 00 //第二块</p>
-</blockquote>
-<h3 id="3-2-PKCS7Padding"><a href="#3-2-PKCS7Padding" class="headerlink" title="3.2 PKCS7Padding"></a>3.2 PKCS7Padding</h3><blockquote>
-<p>每个填充的字节都记录了填充的总字节数，结果如下：<br>F1 F2 F3 F4 F5 F6 F7 F8   //第一块<br>F9 07 07 07 07 07 07 07 //第二块</p>
-</blockquote>
-<h1 id="web前端实例-——-crypto-js"><a href="#web前端实例-——-crypto-js" class="headerlink" title="web前端实例 —— crypto-js"></a>web前端实例 —— crypto-js</h1><p>没看错 就是web前端！ 本实例使用的 crypto-js。<br>安装 crypto-js 是的简单</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install crypto-js -S</span><br><span class="line">// 或者</span><br><span class="line">yarn add crypto-js</span><br></pre></td></tr></table></figure>
-<h2 id="实例-——-Triple-DES"><a href="#实例-——-Triple-DES" class="headerlink" title="实例 —— Triple DES"></a>实例 —— Triple DES</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import CryptoJS from &apos;crypto-js&apos;</span><br><span class="line">var str = &apos;123456&apos;</span><br><span class="line">var key = &apos;0123456789abcdef&apos;</span><br><span class="line">var iv = &apos;0123456789abcdef&apos;</span><br><span class="line"> </span><br><span class="line">key = CryptoJS.enc.Utf8.parse(key)</span><br><span class="line">iv = CryptoJS.enc.Utf8.parse(iv)</span><br><span class="line"> </span><br><span class="line">// DES 加密</span><br><span class="line">var encrypted = CryptoJS.DES.encrypt(str, key, &#123;</span><br><span class="line">    iv: iv,</span><br><span class="line">    mode: CryptoJS.mode.CBC,</span><br><span class="line">    padding: CryptoJS.pad.Pkcs7</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">// 转换为字符串</span><br><span class="line">encrypted = encrypted.toString()</span><br><span class="line"> </span><br><span class="line">// DES 解密</span><br><span class="line">var decrypted = CryptoJS.DES.decrypt(encrypted, key, &#123;</span><br><span class="line">    iv: iv,</span><br><span class="line">    mode: CryptoJS.mode.CBC,</span><br><span class="line">    padding: CryptoJS.pad.Pkcs7</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">// 转换为 utf8 字符串</span><br><span class="line">decrypted = CryptoJS.enc.Utf8.stringify(decrypted)</span><br><span class="line"> </span><br><span class="line">// Triple DES 加密</span><br><span class="line">var encrypted = CryptoJS.TripleDES.encrypt(str, key, &#123;</span><br><span class="line">    iv: iv,</span><br><span class="line">    mode: CryptoJS.mode.CBC,</span><br><span class="line">    padding: CryptoJS.pad.Pkcs7</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">// 转换为字符串</span><br><span class="line">encrypted = encrypted.toString()</span><br><span class="line"> </span><br><span class="line">// Triple DES 解密</span><br><span class="line">var decrypted = CryptoJS.TripleDES.decrypt(encrypted, key, &#123;</span><br><span class="line">    iv: iv,</span><br><span class="line">    mode: CryptoJS.mode.CBC,</span><br><span class="line">    padding: CryptoJS.pad.Pkcs7</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">// 转换为 utf8 字符串</span><br><span class="line">decrypted = CryptoJS.enc.Utf8.stringify(decrypted)</span><br></pre></td></tr></table></figure>
-          
+          前言web前端这个概念其实是在近几年才突出出来！它的前身其实就是传说中的切图工(把UI出的图切出来放在对的地方就好)。前后端分离后, web前端要承当的是事情变的越来越多,代码量也越变越大。前端工程化,构建编译,加密…
+近期在整理web前端用到的一些加密技术以及相关的工具。
+对称加密算法 (DES、
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/18/加密算法(一)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -790,9 +775,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-06T10:35:59+08:00">2017-09-06</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-06T10:35:59+08:00">2017-09-06</time>
             
 
             
@@ -810,7 +795,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/全栈/" itemprop="url" rel="index"><span itemprop="name">全栈</span></a></span>
@@ -849,11 +834,17 @@
       
         
           
-            <p>在项目开发的过程的经常会做一些重复的工作以及遇到一些类似的问题！ 特别在新开一个工程的时候！</p>
-<h1 id="API接口"><a href="#API接口" class="headerlink" title="API接口"></a>API接口</h1><p>目前大部分的工程开发都已经做到了前后端分离。后端的小伙伴提供api接口,作为前端的我们使用ajax调用api接口获取数据，再渲染出相对应的界面！在实际的项目中，可能会遇到以下几个问题</p>
-<h2 id="前后端同步开发时-Mock的使用"><a href="#前后端同步开发时-Mock的使用" class="headerlink" title="前后端同步开发时, Mock的使用"></a>前后端同步开发时, Mock的使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">const express = require(&apos;express&apos;)</span><br><span class="line">const router = express.Router()</span><br><span class="line"></span><br><span class="line">// 使用 Mock</span><br><span class="line">var Mock = require(&apos;mockjs&apos;)</span><br><span class="line"></span><br><span class="line">router.get(&apos;/test&apos;, (req, res) =&gt; &#123;</span><br><span class="line">  var data = Mock.mock(&#123;</span><br><span class="line">    // 属性 list 的值是一个数组，其中含有 1 到 10 个元素</span><br><span class="line">    &apos;list|10&apos;: [&#123;</span><br><span class="line">      // 属性 id 是一个自增数，起始值为 1，每次增 1</span><br><span class="line">      &apos;id|+1&apos;: 1,</span><br><span class="line">      &apos;task_id|+1&apos;: 1,</span><br><span class="line">      &apos;name|1&apos;: &apos;@cname()&apos;,</span><br><span class="line">      &apos;time_begin&apos;: &apos;@datetime(&quot;yyyy-MM-dd HH:mm:ss&quot;)&apos;,</span><br><span class="line">      &apos;time_end&apos;: &apos;@datetime(&quot;yyyy-MM-dd HH:mm:ss&quot;)&apos;</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;)</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    code: 200,</span><br><span class="line">    message: data</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.get(&apos;*&apos;, (req, res) =&gt; &#123;</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    code: -200,</span><br><span class="line">    message: &apos;没有找到该页面&apos;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">module.exports = router</span><br></pre></td></tr></table></figure>
-<h2 id="初始化模板-——-后台管理篇"><a href="#初始化模板-——-后台管理篇" class="headerlink" title="初始化模板 —— 后台管理篇"></a>初始化模板 —— 后台管理篇</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init 1xuanyuan1/admin-cli my-project</span><br></pre></td></tr></table></figure>
-          
+          在项目开发的过程的经常会做一些重复的工作以及遇到一些类似的问题！ 特别在新开一个工程的时候！
+API接口目前大部分的工程开发都已经做到了前后端分离。后端的小伙伴提供api接口,作为前端的我们使用ajax调用api接口获取数据，再渲染出相对应的界面！在实际的项目中，可能会遇到以下几个问题
+前后端同步开
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/06/为了以后的自己能偷懒/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -931,9 +922,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-05T16:34:49+08:00">2017-09-05</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T16:34:49+08:00">2017-09-05</time>
             
 
             
@@ -951,7 +942,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/全栈/" itemprop="url" rel="index"><span itemprop="name">全栈</span></a></span>
@@ -990,13 +981,16 @@
       
         
           
-            <p>如果你要预呈现页面来更好地支持 SEO，使用 Webpack 插件：prerender-spa-plugin ，经过测试这是可以在 vue 中使用的。对于经常变动的页面，Prerender.io 和 Netlify 提供预呈现功能从而更好地支持搜索引擎。</p>
-<h1 id="SPA预渲染-——-使用-prerender-spa-plugin"><a href="#SPA预渲染-——-使用-prerender-spa-plugin" class="headerlink" title="SPA预渲染 —— 使用 prerender-spa-plugin"></a>SPA预渲染 —— 使用 prerender-spa-plugin</h1><h2 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1.安装插件"></a>1.安装插件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev prerender-spa-plugin</span><br></pre></td></tr></table></figure>
-<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add prerender-spa-plugin -D</span><br></pre></td></tr></table></figure></p>
-<h2 id="2-在-build-webpack-prod-conf-js-文件中里使用"><a href="#2-在-build-webpack-prod-conf-js-文件中里使用" class="headerlink" title="2.在 build/webpack.prod.conf.js 文件中里使用"></a>2.在 build/webpack.prod.conf.js 文件中里使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 放在文件顶部</span><br><span class="line">var PrerenderSpaPlugin = require(&apos;prerender-spa-plugin&apos;)</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">plugins: [</span><br><span class="line">  new PrerenderSpaPlugin(</span><br><span class="line">    // 要编译的目录</span><br><span class="line">    path.join(__dirname, &apos;../dist&apos;),</span><br><span class="line">    // 你要预呈现的列表</span><br><span class="line">    [ &apos;/&apos; ]</span><br><span class="line">  )</span><br><span class="line">  ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>如果你想预呈现 /about 和 /contact，那么列表就是 [ ‘/‘, ‘/about’, ‘/contact’ ]</p>
-
-          
+          如果你要预呈现页面来更好地支持 SEO，使用 Webpack 插件：prerender-spa-plugin ，经过测试这是可以在 vue 中使用的。对于经常变动的页面，Prerender.io 和 Netlify 提供预呈现功能从而更好地支持搜索引擎。
+SPA预渲染 —— 使用 prerender
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/05/SPA预渲染/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1074,9 +1068,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-30T15:07:49+08:00">2017-08-30</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T15:07:49+08:00">2017-08-30</time>
             
 
             
@@ -1094,7 +1088,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小知识/" itemprop="url" rel="index"><span itemprop="name">小知识</span></a></span>
@@ -1133,44 +1127,21 @@
       
         
           
-            <h1 id="1-跨域"><a href="#1-跨域" class="headerlink" title="1.跨域"></a>1.跨域</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>  为了保证使用者信息的安全，防止恶意网站篡改用户数据</p>
-<blockquote>
-<p>只要协议、域名、端口有任何一个不同，都被当作是不同的域，之间的请求就是跨域操作</p>
-</blockquote>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h3 id="1-CORS（跨域资源访问）"><a href="#1-CORS（跨域资源访问）" class="headerlink" title="1).CORS（跨域资源访问）"></a>1).CORS（跨域资源访问）</h3><p>后端设置</p>
-<blockquote>
-<p>Access-Control-Allow-Origin: origin | ‘<em>‘ 允许某个指定的域访问，</em>表示不限制域。</p>
-<p>Access-Control-Allow-Methods: ‘GET,POST,PUT,DELETE’ 允许哪些类型的请求</p>
-<p>Access-Control-Allow-Headers: ‘x-token’ 允许的自定义Header。</p>
-</blockquote>
-<h3 id="2-代理"><a href="#2-代理" class="headerlink" title="2).代理"></a>2).代理</h3><p>通过同源的api调用跨域的api, 服务端没有跨域的问题</p>
-<h3 id="3-jsonp"><a href="#3-jsonp" class="headerlink" title="3).jsonp"></a>3).jsonp</h3><h1 id="2-CSRF和XSS"><a href="#2-CSRF和XSS" class="headerlink" title="2.CSRF和XSS"></a>2.CSRF和XSS</h1><blockquote>
-<p>XSS：跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。</p>
-<p>CSRF:跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。</p>
-<p>很多同学会搞不明白XSS与CSRF的区别，虽然这两个关键词时常抱团出现，但他们两个是不同维度的东西（或者说他们的目的是不一样的）。<br>XSS更偏向于方法论，CSRF更偏向于一种形式，只要是伪造用户发起的请求，都可成为CSRF攻击。</p>
-</blockquote>
-<h1 id="3-浏览器的渲染过程"><a href="#3-浏览器的渲染过程" class="headerlink" title="3.浏览器的渲染过程"></a>3.浏览器的渲染过程</h1><blockquote>
-<p>DOM -&gt; CSSOM -&gt; render -&gt; layout -&gt; print</p>
-</blockquote>
-<h1 id="4-虚拟DOM、Diff算法、vuex和redux、weex和reactNative"><a href="#4-虚拟DOM、Diff算法、vuex和redux、weex和reactNative" class="headerlink" title="4.虚拟DOM、Diff算法、vuex和redux、weex和reactNative"></a>4.虚拟DOM、Diff算法、vuex和redux、weex和reactNative</h1><h2 id="1-虚拟DOM"><a href="#1-虚拟DOM" class="headerlink" title="1).虚拟DOM"></a>1).虚拟DOM</h2><p>把DOM存入内存, 不直接操作真实的DOM 先修改虚拟DOM 再把更改后的变化同步到真实DOM</p>
-<blockquote>
-<p>ps.虚拟DOM的推出 使weex &amp; reactNative等用JS写UI ios、Android或者web 负责渲染的方式让一套代码三端通用成功可能！</p>
-</blockquote>
-<h2 id="2-Diff算法"><a href="#2-Diff算法" class="headerlink" title="2).Diff算法"></a>2).Diff算法</h2><blockquote>
-<p>在标准diff机制下：在同一位置对比前后的dom节点，发现节点改变了，会继续比较该节点的子节点，一层层对比，找到不同的节点，然后更新节点。</p>
-<p>在react的diff算法下，在同一位置对比前后dom节点,只要发现不同，就会删除操作前的domm节点（包括其子节点），替换为操作后的dom节点。</p>
-<p>在vue的diff算法下，有无设置key<br>尽量不要跨层级的修改dom<br>设置key可以最大化的利用节点<br>不要盲目相信diff的效率，在必要时可以手工优化</p>
-</blockquote>
-<h1 id="5-常用的ES6"><a href="#5-常用的ES6" class="headerlink" title="5.常用的ES6"></a>5.常用的ES6</h1><blockquote>
-<p>1.函数参数默认值<br>2.模板字符串<br>3.解构赋值<br>4.对象属性简写<br>5.箭头函数<br>6.Promise<br>7.Let与Const<br>8.类<br>9.模块化</p>
-</blockquote>
-<h1 id="6-SSR-服务端渲染-weex"><a href="#6-SSR-服务端渲染-weex" class="headerlink" title="6.SSR(服务端渲染) weex"></a>6.SSR(服务端渲染) weex</h1><p>js代码打包成bundle 然后用 各个端的渲染器来渲染相应的页面</p>
-<h1 id="7-遇到的问题，以及解决"><a href="#7-遇到的问题，以及解决" class="headerlink" title="7.遇到的问题，以及解决"></a>7.遇到的问题，以及解决</h1><h1 id="8-typescipt"><a href="#8-typescipt" class="headerlink" title="8.typescipt"></a>8.typescipt</h1><h1 id="9-cancel-request"><a href="#9-cancel-request" class="headerlink" title="9.cancel request"></a>9.cancel request</h1><h1 id="10-与后端配合"><a href="#10-与后端配合" class="headerlink" title="10.与后端配合"></a>10.与后端配合</h1><p>前端比较倾向于展示所需要的数据, 后端比较倾向于输出模型相关的数据  两者其实是有冲突的<br>常规的是前端拿到模型相关的数据 如果做数据清洗 转换为展示所需的数据</p>
-<blockquote>
-<p>可以将数据清洗的部分抽取出来 做一个node的中间层</p>
-</blockquote>
+          1.跨域介绍  为了保证使用者信息的安全，防止恶意网站篡改用户数据
 
-          
+只要协议、域名、端口有任何一个不同，都被当作是不同的域，之间的请求就是跨域操作
+
+解决1).CORS（跨域资源访问）后端设置
+
+Access-Control-Allow-Origin: origin | ‘‘ 允许某个指定的域访问
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/30/前端面试问题小结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1248,9 +1219,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-29T14:50:38+08:00">2017-08-29</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T14:50:38+08:00">2017-08-29</time>
             
 
             
@@ -1268,7 +1239,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
@@ -1307,18 +1278,18 @@
       
         
           
-            <h1 id="注意力-三个大坑"><a href="#注意力-三个大坑" class="headerlink" title="注意力 三个大坑"></a>注意力 三个大坑</h1><h2 id="1-莫名其妙的凑热闹"><a href="#1-莫名其妙的凑热闹" class="headerlink" title="1.莫名其妙的凑热闹"></a>1.莫名其妙的凑热闹</h2><p>路边围观,网上围观 即传说中的吃瓜群众！</p>
-<h2 id="2-心急火燎的随大流"><a href="#2-心急火燎的随大流" class="headerlink" title="2.心急火燎的随大流~~~~"></a>2.心急火燎的随大流~~~~</h2><p>跟随趋势！ 一旦什么东西火了就心急火燎的去随大流！ —— 趋势不属于心急火燎的人  机会是属于有准备的人 ——&gt; 做好自己的积累</p>
-<h2 id="3-操碎了别人的心"><a href="#3-操碎了别人的心" class="headerlink" title="3.操碎了别人的心"></a>3.操碎了别人的心</h2><p>别人的事 成功与否与我何干！！！</p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>注意力在一天内其实很少！ 注意力是你最宝贵的财富！！！ 把注意力放在自己的成长上！ 生活/创业 都是成长 每天一点点的的成长就是最好的财富</p>
-<h1 id="付费"><a href="#付费" class="headerlink" title="付费"></a>付费</h1><blockquote>
-<p>凡是能用钱买的就是便宜的~~~！！！</p>
-<p>注意力 &gt; 时间 &gt; 金钱</p>
-</blockquote>
-<h2 id="时间-vs-金钱"><a href="#时间-vs-金钱" class="headerlink" title="时间 vs 金钱"></a>时间 vs 金钱</h2><p>比如说外卖~  在撸代码的时候 花几块钱让别人送个外卖过来 在同等时间内我敲代码产生的效益比这个更有价值 特别是起身去买外卖的时候会打扰目前撸代码的时的注意力</p>
-<h2 id="注意力-vs-时间"><a href="#注意力-vs-时间" class="headerlink" title="注意力 vs 时间"></a>注意力 vs 时间</h2><p>注意力能创建价值 而时间并不一定  特别是有些时候我们还想要去杀死时间！ 撸游戏、看热闹！~~</p>
-<h1 id="安全感"><a href="#安全感" class="headerlink" title="安全感"></a>安全感</h1>
-          
+          注意力 三个大坑1.莫名其妙的凑热闹路边围观,网上围观 即传说中的吃瓜群众！
+2.心急火燎的随大流~~~~跟随趋势！ 一旦什么东西火了就心急火燎的去随大流！ —— 趋势不属于心急火燎的人  机会是属于有准备的人 ——&gt; 做好自己的积累
+3.操碎了别人的心别人的事 成功与否与我何干！！！
+结论注
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/29/通往财富自由之路(一)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1396,9 +1367,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-31T11:01:28+08:00">2017-07-31</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T11:01:28+08:00">2017-07-31</time>
             
 
             
@@ -1416,7 +1387,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/全栈/" itemprop="url" rel="index"><span itemprop="name">全栈</span></a></span>
@@ -1455,9 +1426,15 @@
       
         
           
-            <h1 id="https配置"><a href="#https配置" class="headerlink" title="https配置"></a>https配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen          80;</span><br><span class="line">    server_name     hr.dduke.me;</span><br><span class="line">    rewrite ^(.*) https://$host$1 permanent;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen          443;</span><br><span class="line">    server_name     hr.dduke.me;</span><br><span class="line">    #rewrite ^(.*) https://$host$1 permanent;</span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate 1_hr.dduke.me_bundle.crt;</span><br><span class="line">    ssl_certificate_key 2_hr.dduke.me.key;</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8082;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+          https配置1234567891011121314151617181920212223server &#123;    listen          80;    server_name     hr.dduke.me;    rewrite ^(.*) https://$host$1 perm
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/31/https配置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1535,9 +1512,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-18T17:13:26+08:00">2017-07-18</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T17:13:26+08:00">2017-07-18</time>
             
 
             
@@ -1555,7 +1532,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/踩坑/" itemprop="url" rel="index"><span itemprop="name">踩坑</span></a></span>
@@ -1594,14 +1571,16 @@
       
         
           
-            <h1 id="Mongoose-Date小坑"><a href="#Mongoose-Date小坑" class="headerlink" title="Mongoose Date小坑"></a>Mongoose Date小坑</h1><p>今天在用nodejs做后端 mongo做数据库的一个应用时发的一个坑。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 假设有这样一个状态</span><br><span class="line"><span class="built_in">let</span> <span class="built_in">where</span> = &#123;</span><br><span class="line">  create_date: &#123;</span><br><span class="line">    <span class="variable">$gte</span>: <span class="string">"2017-07-10T16:00:00.000Z"</span>,</span><br><span class="line">    <span class="variable">$lt</span>: <span class="string">"2017-07-17T16:00:00.000Z"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">mongoDB.find(<span class="built_in">where</span>).<span class="built_in">exec</span>().<span class="keyword">then</span>(result =&gt; &#123;</span><br><span class="line">  console.log(result) // 该处能正常查询获取到数据</span><br><span class="line">&#125;)</span><br><span class="line">mongoDB.aggregate().match(<span class="built_in">where</span>).<span class="built_in">exec</span>().<span class="keyword">then</span>(result =&gt; &#123;</span><br><span class="line">  console.log(result) // 该处不能正常查询获取到数据</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>find时 Date类型的数据可以直接用字符串  match时不行!</p>
-<h1 id="思考解决"><a href="#思考解决" class="headerlink" title="思考解决"></a>思考解决</h1><p>若将其转化为 Date类型是否可行 ？  故做了以下测试</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> <span class="built_in">where</span> = &#123;</span><br><span class="line">  create_date: &#123;</span><br><span class="line">    <span class="variable">$gte</span>: new Date(<span class="string">"2017-07-10T16:00:00.000Z"</span>),</span><br><span class="line">    <span class="variable">$lt</span>: new Date(<span class="string">"2017-07-17T16:00:00.000Z"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">mongoDB.find(<span class="built_in">where</span>).<span class="built_in">exec</span>().<span class="keyword">then</span>(result =&gt; &#123;</span><br><span class="line">  console.log(result) // 该处能正常查询获取到数据</span><br><span class="line">&#125;)</span><br><span class="line">mongoDB.aggregate().match(<span class="built_in">where</span>).<span class="built_in">exec</span>().<span class="keyword">then</span>(result =&gt; &#123;</span><br><span class="line">  console.log(result) // 该处能正常查询获取到数据</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>OK  fixed! ps.这个算 mongoose的bug吗？ 哈哈😄</p>
-
-          
+          Mongoose Date小坑今天在用nodejs做后端 mongo做数据库的一个应用时发的一个坑。
+12345678910111213// 假设有这样一个状态let where = &#123;  create_date: &#123;    $gte: "2017-07-10T16:00:00.
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/18/Mongoose Date小坑/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1679,9 +1658,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-04T10:44:28+08:00">2017-07-04</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-04T10:44:28+08:00">2017-07-04</time>
             
 
             
@@ -1699,7 +1678,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/全栈/" itemprop="url" rel="index"><span itemprop="name">全栈</span></a></span>
@@ -1738,12 +1717,16 @@
       
         
           
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本人比较穷,就只买了一台服务器玩玩。域名的话可以有很多(子域名基本上可以无限建)，为了给每个项目都分配一个域名，并且都能通过80端口访问到。(ps.域名后面再加一个端口  看起来有点蛋疼)</p>
-<h1 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h1><p>使用的是nginx做端口转发，实现起来也比较简单。修改nginx的配置(本文系统是基于Centos 7),若使用yum install的话 nginx的配置文件路径为 <strong>/etc/nginx/nginx.conf</strong>, 具体代码参考如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen          80;</span><br><span class="line">    server_name     chat.dduke.me;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8080;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen          80;</span><br><span class="line">    server_name     topasm.dduke.me;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8081;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ps.配置完后 不要忘记重新加载nginx配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure></p>
-
-          
+          前言本人比较穷,就只买了一台服务器玩玩。域名的话可以有很多(子域名基本上可以无限建)，为了给每个项目都分配一个域名，并且都能通过80端口访问到。(ps.域名后面再加一个端口  看起来有点蛋疼)
+正题使用的是nginx做端口转发，实现起来也比较简单。修改nginx的配置(本文系统是基于Centos 7
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/04/一个服务器多端口多域名/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1829,7 +1812,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">12</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
@@ -1856,7 +1839,7 @@
                       
                     
                     <span class="site-state-item-count">7</span>
-                    <span class="site-state-item-name">categories</span>
+                    <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
               
@@ -1905,7 +1888,7 @@
                       
                     
                     <span class="site-state-item-count">18</span>
-                    <span class="site-state-item-name">tags</span>
+                    <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
               
@@ -1958,7 +1941,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -1966,7 +1949,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.0.3</div>
 
 
 
@@ -2092,6 +2075,326 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
