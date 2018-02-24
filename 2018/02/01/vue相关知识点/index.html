@@ -103,18 +103,20 @@
   <meta name="keywords" content="面试,思考,知识点整理," />
 
 
-<meta name="description" content="Vue的整体机制 沈辉测试">
+<meta name="description" content="Vue的整体机制 主要流程为 初始化及挂载 =&amp;gt; 编译 =&amp;gt; 响应式 =&amp;gt; Virtual DOM =&amp;gt; 更新视图   初始化及挂载new Vue()的时候,Vue会调用一个 _init 函数，它会初始化Vue的生命周期、事件、data等，其中最重要的是通过 Object.defineProperty 设置 setter 与 getter 函数，来实现[响应式]以及[依赖收">
 <meta name="keywords" content="面试,思考,知识点整理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue相关知识点">
 <meta property="og:url" content="http://yoursite.com/2018/02/01/vue相关知识点/index.html">
 <meta property="og:site_name" content="DDuke 小屋">
-<meta property="og:description" content="Vue的整体机制 沈辉测试">
+<meta property="og:description" content="Vue的整体机制 主要流程为 初始化及挂载 =&amp;gt; 编译 =&amp;gt; 响应式 =&amp;gt; Virtual DOM =&amp;gt; 更新视图   初始化及挂载new Vue()的时候,Vue会调用一个 _init 函数，它会初始化Vue的生命周期、事件、data等，其中最重要的是通过 Object.defineProperty 设置 setter 与 getter 函数，来实现[响应式]以及[依赖收">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-01T06:22:32.000Z">
+<meta property="og:image" content="http://yoursite.com/images/vue-all.png">
+<meta property="og:updated_time" content="2018-02-02T01:56:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue相关知识点">
-<meta name="twitter:description" content="Vue的整体机制 沈辉测试">
+<meta name="twitter:description" content="Vue的整体机制 主要流程为 初始化及挂载 =&amp;gt; 编译 =&amp;gt; 响应式 =&amp;gt; Virtual DOM =&amp;gt; 更新视图   初始化及挂载new Vue()的时候,Vue会调用一个 _init 函数，它会初始化Vue的生命周期、事件、data等，其中最重要的是通过 Object.defineProperty 设置 setter 与 getter 函数，来实现[响应式]以及[依赖收">
+<meta name="twitter:image" content="http://yoursite.com/images/vue-all.png">
 
 
 
@@ -393,9 +395,12 @@
 
       
         <h1 id="Vue的整体机制"><a href="#Vue的整体机制" class="headerlink" title="Vue的整体机制"></a>Vue的整体机制</h1><blockquote>
-<p>沈辉<br><span style="color:red;">测试</span></p>
+<p>主要流程为 初始化及挂载 =&gt; 编译 =&gt; 响应式 =&gt; Virtual DOM =&gt; 更新视图</p>
 </blockquote>
-
+<p><img src="/images/vue-all.png" alt=""></p>
+<h2 id="初始化及挂载"><a href="#初始化及挂载" class="headerlink" title="初始化及挂载"></a>初始化及挂载</h2><p><code>new Vue()</code>的时候,Vue会调用一个 <code>_init</code> 函数，它会初始化Vue的生命周期、事件、data等，其中最重要的是通过 <code>Object.defineProperty</code> 设置 <code>setter</code> 与 <code>getter</code> 函数，来实现[<em>响应式</em>]以及[<em>依赖收集</em>]。</p>
+<p>初始化之后会调用 <code>$mount</code> 函数挂载组件，如果是运行时编译，即不存在 render function 但是存在 template 的情况，需要进行[<em>编译</em>]步骤。</p>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2>
       
     </div>
     
@@ -627,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue的整体机制"><span class="nav-number">1.</span> <span class="nav-text">Vue的整体机制</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue的整体机制"><span class="nav-number">1.</span> <span class="nav-text">Vue的整体机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化及挂载"><span class="nav-number">1.1.</span> <span class="nav-text">初始化及挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译"><span class="nav-number">1.2.</span> <span class="nav-text">编译</span></a></li></ol></li></ol></div>
             
 
           </div>

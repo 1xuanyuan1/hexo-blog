@@ -393,10 +393,11 @@
         
           
           Vue的整体机制
-沈辉测试
+主要流程为 初始化及挂载 =&gt; 编译 =&gt; 响应式 =&gt; Virtual DOM =&gt; 更新视图
 
 
-          
+初始化及挂载new Vue()的时候,Vue会调用一个 _init 函数，它会初始化Vue的生命周期、事件、data等，其中最重要的是通过 Object.d
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/02/01/vue相关知识点/#more" rel="contents">
