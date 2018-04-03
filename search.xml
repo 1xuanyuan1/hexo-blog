@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JS-new]]></title>
+    <url>%2F2018%2F04%2F03%2FJS-new%2F</url>
+    <content type="text"><![CDATA[JS中并没有类的概念,但是经常性会看到 var test = new Test(&#39;duke&#39;) 这样的写法。很像java里构造实例的方式。 123456789101112131415161718// ES5function Test(name) &#123; this.name = name&#125;// 等价于function Test(name) &#123; var obj = Object.create(Test.prototype) obj.name = name return obj&#125;// ES6class Test &#123; constructor (name) &#123; this.name = name &#125;&#125;]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Weex快速开发三端应用：做一个看书软件]]></title>
+    <url>%2F2018%2F03%2F20%2FWeex%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91%E4%B8%89%E7%AB%AF%E5%BA%94%E7%94%A8%EF%BC%9A%E5%81%9A%E4%B8%80%E4%B8%AA%E7%9C%8B%E4%B9%A6%E8%BD%AF%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[小册内容 [ ] 1.weex 基本原理 [ ] 2.weex 脚手架的使用 [ ] 3.weex 的一些基本组件 [ ] 4.搭建第一个 weex 页面 [ ] 5.推荐书籍页 &amp; 网络请求 [ ] 6.我的书架 &amp; 本地缓存 [ ] 7.书籍目录 &amp; 长列表处理 [ ] 8.页面之间传值 [ ] 9.真机运行与调试 [ ] 10.云打包工具 —— 轻舟 [ ] 11.小结 什么是 Weex ？ Weex 是一个使用 Web 开发体验来开发高性能原生应用的框架。 Weex 致力于使开发者能基于当代先进的 Web 开发技术，使用同一套代码来构建 Android、iOS 和 Web 应用。具体来讲，在集成了 WeexSDK 之后，你可以使用 JavaScript 和现代流行的前端框架来开发移动应用。 Weex 的结构是解耦的，渲染引擎与语法层是分开的，也不依赖任何特定的前端框架，目前主要支持 Vue.js 和 Rax 这两个前端框架。 VueVue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。目前主流的三大框架之一，本小册就是用的 Vue 框架开做 Weex 的语法层。详情可参阅这里。 RaxRax 是一个兼容 React 接口的前端框架。详情可参阅这里。 为什么要学 Weex？写过H5的同学肯定会被它的简单高效、发布即更新、一条URL可适配多端等这些快所吸引，但写过 Native 的同学肯定也会被 Native 的富交互、性能体验、可调用原生能力、可管理内存等特性给我们的业务带来更好的体验。 快与体验兼得 你会学到什么？ weex 基本原理 weex 脚手架的使用 weex 基本组件的使用 weex 的网页调试&amp;真机调试 实战中遇到的一些坑以及相应的解决方案 你需要准备什么？需要你懂一些HTML, CSS 与 JS 的基础，因为本课程是使用 Vue 来做 weex 的语法层，如果你有一定的 Vue 基础，你将更好的学习。 一台移动设备（Android或者iOS手机） 一台可以联网的电脑 还需要一点点的前端基础 购买须知 本小册为图文形式内容服务，共计 11 节； 购买用户可享有小册永久的阅读权限； 购买用户可进入小册微信群，与作者互动； 掘金小册为虚拟内容服务，一经购买成功概不退款； 掘金小册版权归北京北比信息技术有限公司所有，任何机构、媒体、网站或个人未经本网协议授权不得转载、链接、转贴或以其他方式复制发布/发表，违者将依法追究责任； 在掘金小册阅读过程中，如有任何问题，请邮件联系 xiaoce@xitu.io]]></content>
+      <categories>
+        <category>小册子</category>
+      </categories>
+      <tags>
+        <tag>小册子</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Vue相关知识点]]></title>
     <url>%2F2018%2F02%2F01%2Fvue%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9%2F</url>
     <content type="text"><![CDATA[Vue的整体机制 主要流程为 初始化及挂载 =&gt; 编译 =&gt; 响应式 =&gt; Virtual DOM =&gt; 更新视图 初始化及挂载new Vue()的时候,Vue会调用一个 _init 函数，它会初始化Vue的生命周期、事件、data等，其中最重要的是通过 Object.defineProperty 设置 setter 与 getter 函数，来实现[响应式]以及[依赖收集]。 初始化之后会调用 $mount 函数挂载组件，如果是运行时编译，即不存在 render function 但是存在 template 的情况，需要进行[编译]步骤。 编译]]></content>
@@ -14,9 +36,21 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[基本知识]]></title>
+    <url>%2F2018%2F01%2F31%2F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%2F</url>
+    <content type="text"><![CDATA[基本定义一级函数在 JavaScript 中，函数是一级函数。这意味着，就像对象一样，你可以像处理其他元素（如数字、字符串、数组等）一样来处理函数。JavaScript 函数可以： 1.存储在变量中。2.从一个函数返回。3.作为参数传递给另一个函数。 高阶函数返回另一个函数的函数 与 具有函数参数的函数 被称为高阶函数。 12345678910111213function test () &#123; return function () &#123; &#125;&#125;function test1 () &#123;&#125;function test2 (callback) &#123; callback()&#125;test2(test1) 回调函数作为参数传递给另一个函数的函数被称为回调函数。 闭包 函数保留对其作用域的访问的这个过程被称为闭包 闭包的作用 隐含地传递参数。在函数声明中，存储作用域的快照。 123456789function remember(number) &#123; return function() &#123; return number; &#125;&#125;const returnedFunction = remember(5);console.log( returnedFunction() ); // 打印数字 5 立即调用函数表达式立即调用函数表达式或 IIFE（发音为 iffy）是在定义之后立即被调用的函数。 新单词instanceof constructor]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>思考</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[失败经验总结]]></title>
     <url>%2F2018%2F01%2F31%2F%E5%A4%B1%E8%B4%A5%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[下次每次电话面试都记得录音 ···一直觉得阿里的前端是前端这边的标杆。希望能以阿里的前端为标准要求自己，自己进步并跟上步伐。最近一次阿里的面试是目前数次阿里面试中，面试次数最多的一次，也发现了更多自己的不足。 面试经历一面（电话面）聊了不少，半个小时左右。 1.vue-router实现原理2.vuex实现原理3.浏览器渲染机制4.各个浏览器内核以及兼容问题5.移动端适配 二面（现场面）二面的时候比较轻松 1.为什么用vue2.遇到难点3.自己满意的点4.weex 三面（电话面）—— 跪了三面的时候十分紧张,脑袋有点秀逗 vue相关 1.Vue双向绑定原理2.vue-router实现原理3.vue list中 子元素 绑定事件4.vue中列表 下一页之后返回上一页是否重新加载视图 weex相关1.weex实现基本原理2.weex的不足3.weex中的渲染机制 JS/css 1.点击事件 浏览器兼容问题2.移动事件 ontouchmove 以及优化 事件节流比如首先生成一个 独立 重绘的BFC渲染层。然后通过 CSS的相关动画来 控制dom的移动而不是通过JS直接修改 DOM 的位置。在往下就是 通过requestAnimationFrame来优化渲染 3.动画卡顿的问题这个问题应该问的的浏览器渲染以及重绘方面的问题，主要包括以下五个步骤正常情况下可分为三种情况,Javascript 与 Style 必不可少的 1.Layout Paint Composite; margin, padding, height等改变布局的 2.Paint Composite; color等不改变布局只改变样式的 3.Composite; opacity,transform等只改变图层的 具体可以参照这里 ps. 可以引入 60帧/s 即一帧在16ms内完成才能回不造成卡顿，实际情况下浏览器处理仍然需要实际，故要将每帧动画控制在10ms左右 再ps. setTimeout, setInterval 与 requestAnimationFrame使用 requestAnimationFrame 能将 javascript 放在每帧的最开始的时候，避免了中途重绘、丢帧的情况(requestAnimationFrame 在 IE9 浏览器中不支持 可以使用 polyfill会使用setTimeout替代) 4.翻页动效 实现 其他1.最新信息/技术 获取以及了解2.自己的优势3.不用框架 你做过什么4.webpack loader 与 plugin 总结 [x]1.深入了解下Vue的相关原理以及实现(vue, vue-router, vuex) [ ]2.自己写一个简单MVVM框架 [ ]3.Webpack相关的知识点再复习一遍 [ ]4.自己着手写一下 loader 以及 plugin [ ]5.浏览器渲染机制 [ ]6.css3动画 [ ]7.weex相关的原理以及实现 再加最新信息 [ ]8.总结优势]]></content>
+    <content type="text"><![CDATA[下次每次电话面试都记得录音 ···一直觉得阿里的前端是前端这边的标杆。希望能以阿里的前端为标准要求自己，自己进步并跟上步伐。最近一次阿里的面试是目前数次阿里面试中，面试次数最多的一次，也发现了更多自己的不足。 面试经历一面（电话面）聊了不少，半个小时左右。 1.vue-router实现原理2.vuex实现原理3.浏览器渲染机制4.各个浏览器内核以及兼容问题5.移动端适配 二面（现场面）二面的时候比较轻松 1.为什么用vue2.遇到难点3.自己满意的点4.weex 三面（电话面）—— 跪了三面的时候十分紧张,脑袋有点秀逗 vue相关 1.Vue双向绑定原理2.vue-router实现原理3.vue list中 子元素 绑定事件4.vue中列表 下一页之后返回上一页是否重新加载视图 weex相关1.weex实现基本原理2.weex的不足3.weex中的渲染机制 JS/css 1.点击事件 浏览器兼容问题2.移动事件 ontouchmove 以及优化 事件节流比如首先生成一个 独立 重绘的BFC渲染层。然后通过 CSS的相关动画来 控制dom的移动而不是通过JS直接修改 DOM 的位置。在往下就是 通过requestAnimationFrame来优化渲染 放入队列中 固定时间执行一次 3.动画卡顿的问题这个问题应该问的的浏览器渲染以及重绘方面的问题，主要包括以下五个步骤正常情况下可分为三种情况,Javascript 与 Style 必不可少的 1.Layout Paint Composite; margin, padding, height等改变布局的 2.Paint Composite; color等不改变布局只改变样式的 3.Composite; opacity,transform等只改变图层的 具体可以参照这里 ps. 可以引入 60帧/s 即一帧在16ms内完成才能回不造成卡顿，实际情况下浏览器处理仍然需要实际，故要将每帧动画控制在10ms左右 再ps. setTimeout, setInterval 与 requestAnimationFrame使用 requestAnimationFrame 能将 javascript 放在每帧的最开始的时候，避免了中途重绘、丢帧的情况(requestAnimationFrame 在 IE9 浏览器中不支持 可以使用 polyfill会使用setTimeout替代) 4.翻页动效 实现 其他1.最新信息/技术 获取以及了解微信公众号,知乎, 掘金，segmentfault,V2EV, 2.自己的优势以及发展工作五年一直做的事情都是偏业务的，不是一个技术极客，就目前而言的所学的技术都是跟随者业务来走的，jsp + servlet =&gt; 前后端分离 =&gt; 工程化开发，Vue SSR 因为有SEO方面的需求，小公司的的需求敏捷开发，快速迭代 =&gt; 制作了一个能快速开始项目的脚手架，一个简单的组件库，weex一套代码 三端通用。业务方面不仅仅在技术上实现就好，需要跟运营，市场，产品沟通也是非常重要的。在这方面我比较多的经验。开发前明确捕捉到真正的需求，能大大的增加开发效率以及减少后续的返工·比如说后台管理系统以及一些内部的系统，在美观以及动效等方面其实没有太多的需求，对于数据，图表有着比较大的要求，而在to C 的web应用上对用户体验，动效等方面要求就比较好·未来可能会往管理岗位发展，就本人的工作经历而已其实涵盖了技术开发的很多方面，有便于多方协调，本人的性格方面也挺适合。不足的是，目前主要的手段是和事老以及兜底，目前重心还是会放在技术上，争取在前端方向发展出了什么样的问题 都能完美的兜底。 3.不用框架 你做过什么 4.webpack loader 与 pluginloader 用于加载某些资源文件。plugin 用于扩展webpack的功能。 总结 [x]1.深入了解下Vue的相关原理以及实现(vue, vue-router, vuex) [ ]2.自己写一个简单MVVM框架 [ ]3.Webpack相关的知识点再复习一遍 [ ]4.自己着手写一下 loader 以及 plugin [ ]5.浏览器渲染机制 [ ]6.css3动画 [ ]7.weex相关的原理以及实现 再加最新信息 [ ]8.总结优势]]></content>
       <categories>
         <category>面试</category>
       </categories>
