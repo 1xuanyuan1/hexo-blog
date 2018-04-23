@@ -114,9 +114,9 @@
 <meta property="og:image" content="http://yoursite.com/images/umeng_ios.png">
 <meta property="og:image" content="http://yoursite.com/images/umeng_android.png">
 <meta property="og:image" content="http://yoursite.com/images/standard_img.png">
+<meta property="og:image" content="http://yoursite.com/images/vw_%20browser.png">
 <meta property="og:image" content="http://yoursite.com/images/standard_img.png">
-<meta property="og:image" content="http://yoursite.com/images/standard_img.png">
-<meta property="og:updated_time" content="2018-04-23T06:18:07.000Z">
+<meta property="og:updated_time" content="2018-04-23T06:23:02.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端适配问题解决方案">
 <meta name="twitter:description" content="前言随着时间的发展，现在基本上人手一部手机的低头族。做为前端开发的程序猿，在开发移动端web应用的时候，对面一堆各色尺寸不一样的屏幕，就有点淡淡的忧伤。已上是2018年二月份最新的友盟数据，可在这里查看详情 很明显我们所要实现的就是在上述如此之多的屏幕,都能实现UI大大出的视觉图上的效果。而要实现这样的效果主要有两个难点  各屏幕适配 Retina屏下的细节处理（主要是1px的问题）  各屏幕适配">
@@ -419,7 +419,7 @@
 <p>到这里为止是不是就结束了呢 ? 很遗憾的告诉你并不是。为什么 html 元素的 font-size 要设置为 37.5px呢？现在这个界面在iphone6上能完美显示了，在iphone5s,iphone6p能完美显示吗？（iphone6, iphone6s, iphone7. iphone8屏幕没有发生变化，本文直接用iphone6代替了。）<br>上面的两个问题 我们还有没解决，这个时候就轮到flexible登场了。只需要像如下引入就可实现用js来自动根据屏幕宽度设置 html元素的font-size的值。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="引申一下"><a href="#引申一下" class="headerlink" title="引申一下"></a>引申一下</h3><p>在上述过程中，你会发现，UI给到我们的一般是px标注的图，我们将其转化为rem，这个过程其实会花费很大的计算时间。做为一个合格的程序员，我们应该把这种机械性无脑的操作交给计算机来实现。我使用的是PostCss的插件 <a href="https://www.npmjs.com/package/postcss-px2rem" target="_blank" rel="noopener">postcss-px2rem</a>,这个插件能让我们在写代码时候直接写px，在构建的时候自动将我们所写的px转换为rem，大大提升了我们的开发效率。</p>
-<h2 id="vw"><a href="#vw" class="headerlink" title="vw"></a>vw</h2><p>这个vw的方案，相当而言还比较新。vw 即（viewport width）可视窗口的宽度。之所以把这个方案放在后面来说，是因为viewport在去年（2017年）的时候存在不少的兼容性问题，各个浏览器的支持并不是很好。但是来到了2018年这个时间点，viewport单位意见得到了众多浏览器的支持（80.45%）。<br><img src="/images/standard_img.png" alt=""><br>可以在<a href="http://caniuse.mojijs.com/Home/Html/item/key/viewport-units/index.html" target="_blank" rel="noopener">这里</a>查看。</p>
+<h2 id="vw"><a href="#vw" class="headerlink" title="vw"></a>vw</h2><p>这个vw的方案，相当而言还比较新。vw 即（viewport width）可视窗口的宽度。之所以把这个方案放在后面来说，是因为viewport在去年（2017年）的时候存在不少的兼容性问题，各个浏览器的支持并不是很好。但是来到了2018年这个时间点，viewport单位意见得到了众多浏览器的支持（80.45%）。<br><img src="/images/vw_ browser.png" alt=""><br>可以在<a href="http://caniuse.mojijs.com/Home/Html/item/key/viewport-units/index.html" target="_blank" rel="noopener">这里</a>查看。</p>
 <p>接下来就让我们来正式了解下这个方案吧。<br>vw既然是一个尺寸单位，那它的宽度等于多少呢？等于1%整个屏幕的宽度。举个例子，再次以iphone6手机为例，100vw = 750px =&gt; 1vw = 7.5px</p>
 <p>再一次那上次的界面做示范<br><img src="/images/standard_img.png" alt=""></p>
 <ol>
