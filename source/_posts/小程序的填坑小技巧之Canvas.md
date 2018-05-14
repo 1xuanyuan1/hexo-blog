@@ -118,3 +118,134 @@ getContent(detail, length = 24, row = 2) {
 
 我们可以使用 `charCodeAt` 来获取 charCode，中文的话在 127以上（ps.测试的时候发现 数字也是占两个长度的）。
 为了预防之后需求的变动 我把这块提取出来写了一个方法。之后只用传入内容，每行的字数以及行数就好。
+
+## 图片
+这里有两个坑
+
+1. 不能直接使用网络图片，在真机上画不出来
+2. 不能圆角，图片如果是方形的 不会再处理
+
+### 网络图片使用
+
+既然不能直接使用网络图片，那么我们换个思路，把图片下载到本地，在显示出来是不是就行了。
+
+1. 下载网络图片
+
+```JS
+wx.getImageInfo({
+  src: url,
+  success: (res) => {
+    // 下载成功 即可获取到本地路径
+    console.log(res.path)
+  }
+})
+```
+
+直接用这个你会发现，会出错。小程序对能下载的图片做白名单处理。即需要在 `小程序后台 > 设置 > 服务器域名 > downloadFile合法域名` 里设置网络图片的域名。
+
+ps.因为域名要求是https的, 并且一个月只能修改五次，建议把需要下载的网络图片放在自己的https的服务器上，再走个CDN什么的。
+
+2. 绘制图片
+
+接下来跟绘制本地图片一样
+```JS
+ctx.drawImage(res.path, left, top, width, height);
+```
+
+### 图片圆角处理 （本例示范的是圆形，原理一样）
+整体思路是画一个圆形区域，再在这块区域把图片画上去，最后进行合并截取就生成了圆形图片。具体代码如下所示
+
+```JS
+drawImage(ctx, url, left, top, width, height) {
+  // 保存当前环境的状态
+  ctx.save();
+  // 起始一条路径，或重置当前路径
+  ctx.beginPath();
+  // 画一个圆
+  ctx.arc(width / 2 + left, height / 2 + top, width / 2, 0, Math.PI * 2, false);
+  // 从原始画布剪切任意形状和尺寸的区域
+  ctx.clip();
+  wx.getImageInfo({
+    src: url,
+    success: (res) => {
+      // 向画布上绘制图像
+      ctx.drawImage(res.path, left, top, width, height);
+      // 返回之前保存过的路径状态和属性
+      ctx.restore();
+      // 画出来
+      ctx.draw();
+    }
+  })
+},
+```
+
+会发现下载图片是一步异步操作，如果只是一个图片还好，如果是多个的话，就会非常的乱，我们可以用 `Promise` 优化下
+
+```JS
+drawImage(ctx, url, left, top, width, height) {
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(width / 2 + left, height / 2 + top, width / 2, 0, Math.PI * 2, false);
+  ctx.clip();
+  return new Promise((resolve, reject) => {
+    wx.getImageInfo({
+      src: url,
+      success: (res) => {
+        ctx.drawImage(res.path, left, top, width, height);
+        ctx.restore();
+        resolve()
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+},
+```
+
+# 把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。
+使用微信提供的[canvasToTempFilePath](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/temp-file.html)
+```JS
+savePic () {
+  let that = this;
+  let offset_left = (this.data.windowWidth - 303) / 2
+  console.log('savePic')
+  wx.canvasToTempFilePath({
+    x: offset_left,
+    y: 0,
+    width: 303,
+    height: 398,
+    canvasId: 'canvas',
+    success: function (res) {
+      console.log(res.tempFilePath)
+    },
+    fail (e) {
+      console.log(e)
+    }
+  }, this)
+}
+```
+
+# 预览/保存图片
+
+上一步我们已经把把canvas的内容保存生成图片了。继续来其实有两种方案。
+
+1. [saveImageToPhotosAlbum](https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxsaveimagetophotosalbumobject), 把该文件保存到相册里去
+2. [previewImage](https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxpreviewimageobject)，直接预览该图片
+
+其实两种方法都行，可以根据实际的需求做相应的选择。
+
+我在选择的时候采用了 `previewImage`,因为这个不需要用户授权, 用户可以直接把这个图片发送给朋友 并不需要保存图片。如果想要保存图片的话，在预览的时候 也可以保存。
+
+# 小感
+
+以前觉得看文章觉得也就那么回事，自己写的时候才发现，是多么的难产。也许还比较菜吧，继续努力。这是我在掘金上发布的第三篇文章
+
+前两篇分别如下，有需要的话 可以看看
+
+[小程序的填坑小技巧之网络请求改造](https://juejin.im/post/5ae956366fb9a07aaa111037)
+[移动端适配问题解决方案](https://juejin.im/post/5add7a44f265da0b886d05f8)
+
+最近在写 DApp, 基于 nebulas 公链的。5月到7月两个月时间有一个激励计划，上架一个DApp 即可获得 110 NAS 约等于 6000 RMB，周大奖约为100w RMB，不过这个基本上不考虑了, 但是上架一个 DApp 也算一个不小的收入。有兴趣的小伙伴可以去注册下。[注册链接](https://incentive.nebulas.io/cn/signup.html?invite=pWryl)
+
+刚开始一周, 本人提交了两个DApp, 遇到了一些坑吧 在本周会写一个新手教程出来，帮助大家更好的开发DApp
