@@ -100,21 +100,21 @@
 
 
   
-  <meta name="keywords" content="学习,产出," />
+  <meta name="keywords" content="学习,产出,微信小程序," />
 
 
 <meta name="description" content="前言小程序在内测的时候就已经开始玩了，不过最开始的时候觉得，这sx东西东西怎么这么坑的样子，网络请求居然不是返回Promise而是用Callback的方式, 传值居然不能把值写在方法里只能用dataset,在这个全面组件化的大环境下居然不支持组件化… 其实最开始主要是书写时习惯的问题，秉承着我又不做小程序开发，就先忍着你的态度放任不管了。然而天有不测风云，最近因为业务的需求不得不做小程序相关的开发">
-<meta name="keywords" content="学习,产出">
+<meta name="keywords" content="学习,产出,微信小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小程序的填坑小技巧(一)">
-<meta property="og:url" content="http://yoursite.com/2018/05/02/小程序的填坑小技巧/index.html">
+<meta property="og:title" content="小程序的填坑小技巧之网络请求改造">
+<meta property="og:url" content="http://yoursite.com/2018/05/02/小程序的填坑小技巧之网络请求改造/index.html">
 <meta property="og:site_name" content="DDuke 小屋">
 <meta property="og:description" content="前言小程序在内测的时候就已经开始玩了，不过最开始的时候觉得，这sx东西东西怎么这么坑的样子，网络请求居然不是返回Promise而是用Callback的方式, 传值居然不能把值写在方法里只能用dataset,在这个全面组件化的大环境下居然不支持组件化… 其实最开始主要是书写时习惯的问题，秉承着我又不做小程序开发，就先忍着你的态度放任不管了。然而天有不测风云，最近因为业务的需求不得不做小程序相关的开发">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://on-img.com/chart_image/5ae94945e4b019d3a91cca25.png">
-<meta property="og:updated_time" content="2018-05-02T06:23:57.561Z">
+<meta property="og:updated_time" content="2018-05-08T10:04:45.843Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小程序的填坑小技巧(一)">
+<meta name="twitter:title" content="小程序的填坑小技巧之网络请求改造">
 <meta name="twitter:description" content="前言小程序在内测的时候就已经开始玩了，不过最开始的时候觉得，这sx东西东西怎么这么坑的样子，网络请求居然不是返回Promise而是用Callback的方式, 传值居然不能把值写在方法里只能用dataset,在这个全面组件化的大环境下居然不支持组件化… 其实最开始主要是书写时习惯的问题，秉承着我又不做小程序开发，就先忍着你的态度放任不管了。然而天有不测风云，最近因为业务的需求不得不做小程序相关的开发">
 <meta name="twitter:image" content="http://on-img.com/chart_image/5ae94945e4b019d3a91cca25.png">
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/02/小程序的填坑小技巧/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/02/小程序的填坑小技巧之网络请求改造/"/>
 
 
 
@@ -132,7 +132,7 @@
     sidebar: "",
   };
 </script>
-  <title>小程序的填坑小技巧(一) | DDuke 小屋</title>
+  <title>小程序的填坑小技巧之网络请求改造 | DDuke 小屋</title>
   
 
 
@@ -310,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/小程序的填坑小技巧/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/小程序的填坑小技巧之网络请求改造/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DDuke">
@@ -327,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">小程序的填坑小技巧(一)</h1>
+          <h1 class="post-title" itemprop="name headline">小程序的填坑小技巧之网络请求改造</h1>
         
 
         <div class="post-meta">
@@ -455,6 +455,8 @@
           
             <a href="/tags/产出/" rel="tag"># 产出</a>
           
+            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
         </div>
       
 
@@ -475,6 +477,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/08/小程序的填坑小技巧之Canvas/" rel="prev" title="小程序的填坑小技巧之Canvas">
+                小程序的填坑小技巧之Canvas <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -552,7 +558,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -636,7 +642,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

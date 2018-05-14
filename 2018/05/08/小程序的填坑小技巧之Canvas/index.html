@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.3" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="学习,产出,微信小程序," />
+
+
+<meta name="description" content="前言 小程序分享只能分享到好友或者微信群里，不能分享到朋友圈。  这周接到一个这样的坑爹需求，小程序需要实现一个图片分享的功能。让用户可以把图片发送到朋友圈或者其他渠道。  刚开始拿到这个需求，觉得还好，没有太大的感觉, 第一个感觉想把锅甩给后端，调用一个接口让后端传回来一个URL，前端只负责显示就好。^_^  当然这么天真的想法基本上不可能实现的，如果你遇到这样的后端，请好好的珍惜他。 言">
+<meta name="keywords" content="学习,产出,微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序的填坑小技巧之Canvas">
+<meta property="og:url" content="http://yoursite.com/2018/05/08/小程序的填坑小技巧之Canvas/index.html">
+<meta property="og:site_name" content="DDuke 小屋">
+<meta property="og:description" content="前言 小程序分享只能分享到好友或者微信群里，不能分享到朋友圈。  这周接到一个这样的坑爹需求，小程序需要实现一个图片分享的功能。让用户可以把图片发送到朋友圈或者其他渠道。  刚开始拿到这个需求，觉得还好，没有太大的感觉, 第一个感觉想把锅甩给后端，调用一个接口让后端传回来一个URL，前端只负责显示就好。^_^  当然这么天真的想法基本上不可能实现的，如果你遇到这样的后端，请好好的珍惜他。 言">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/witbox_share.png">
+<meta property="og:image" content="http://yoursite.com/images/canvas_process.png">
+<meta property="og:updated_time" content="2018-05-14T03:18:28.815Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小程序的填坑小技巧之Canvas">
+<meta name="twitter:description" content="前言 小程序分享只能分享到好友或者微信群里，不能分享到朋友圈。  这周接到一个这样的坑爹需求，小程序需要实现一个图片分享的功能。让用户可以把图片发送到朋友圈或者其他渠道。  刚开始拿到这个需求，觉得还好，没有太大的感觉, 第一个感觉想把锅甩给后端，调用一个接口让后端传回来一个URL，前端只负责显示就好。^_^  当然这么天真的想法基本上不可能实现的，如果你遇到这样的后端，请好好的珍惜他。 言">
+<meta name="twitter:image" content="http://yoursite.com/images/witbox_share.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/08/小程序的填坑小技巧之Canvas/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>小程序的填坑小技巧之Canvas | DDuke 小屋</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DDuke 小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/08/小程序的填坑小技巧之Canvas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DDuke">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/logo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DDuke 小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">小程序的填坑小技巧之Canvas</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-08T18:03:57+08:00">2018-05-08</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>小程序分享只能分享到好友或者微信群里，不能分享到朋友圈。</p>
+</blockquote>
+<p>这周接到一个这样的坑爹需求，小程序需要实现一个图片分享的功能。让用户可以把图片发送到朋友圈或者其他渠道。</p>
+<p><img src="/images/witbox_share.png" alt=""></p>
+<p>刚开始拿到这个需求，觉得还好，没有太大的感觉, 第一个感觉想把锅甩给后端，调用一个接口让后端传回来一个URL，前端只负责显示就好。^_^ </p>
+<p>当然这么天真的想法基本上不可能实现的，如果你遇到这样的后端，请好好的珍惜他。</p>
+<p>言归正传，前端自己做这个功能的话，必须要借助一个东西，那就是 Canvas。</p>
+<h1 id="初用"><a href="#初用" class="headerlink" title="初用"></a>初用</h1><p>Canvas 并不是小程序独有的，html5里也有。不过本人实在是用的不多。唯二两次 其一做h5小游戏的时候 另一次跟本次的需求很接近，也是把一个 div 里的内容放入 canvas 并生成图片 让用户可以保持。</p>
+<p>我就按照之前的思路来做是没问题的，小程序自己封装了一套API, 不过 canvas 相关的 API 跟正常 html 的基本一样, 我就按照以前 web 的方式再过一遍。</p>
+<p><img src="/images/canvas_process.png" alt=""></p>
+<h1 id="开用"><a href="#开用" class="headerlink" title="开用"></a>开用</h1><p>首先在我们的wxml写下如下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">class</span>=<span class="string">"canvas"</span> <span class="attr">canvas-id</span>=<span class="string">"canvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>设置 Canvas 大小，可以直接在 wxml 里的 canvas 标签上设置，也可以用 wcss 。个人比较喜欢用wcss 。</p>
+<p>重点来了 <code>canvas-id</code> 是小程序里特有的，是canvas 组件的唯一标识符，之后的很多地方都需要用到。</p>
+<p>然后我们就开始写 js 了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里的 canvas 就是之前在 wxml 里的 canvas-id</span></span><br><span class="line"><span class="keyword">let</span> ctx = wx.createCanvasContext(<span class="string">'canvas'</span>)</span><br></pre></td></tr></table></figure>
+<p><code>第一个坑的地方来了，正常来 page 里用是一点没问题没有的，但是在组件里的话，画不了，就是显示不出来。</code></p>
+<p>查<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/create-canvas-context.html" target="_blank" rel="noopener">文档</a>能发现下列一段话</p>
+<blockquote>
+<p>创建 canvas 绘图上下文（指定 canvasId）。在自定义组件下，第二个参数传入组件实例this，以操作组件内 <code>&lt;canvas/&gt;</code> 组件Tip: 需要指定 canvasId，该绘图上下文只作用于对应的 <code>&lt;canvas/&gt;</code></p>
+</blockquote>
+<p>很显然，我们就代码改成如下即可</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ctx = wx.createCanvasContext(<span class="string">'canvas'</span>, <span class="keyword">this</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="在相应的位置画文字及图片"><a href="#在相应的位置画文字及图片" class="headerlink" title="在相应的位置画文字及图片"></a>在相应的位置画文字及图片</h1><p>具体怎么画，我就不讲了，直接开始讲坑的点。</p>
+<h2 id="在相应的位置"><a href="#在相应的位置" class="headerlink" title="在相应的位置"></a>在相应的位置</h2><p>没错，就一个很坑的点。canvas 是居中的，而且在不同尺寸的屏幕上各个点的位置都不一样。我们需要获取屏幕的宽度以及高度进行计算。（主要是宽度）<br>小程序提供了如下方面，让我们来获取设备的一些信息<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wx.getSystemInfo(&#123;</span><br><span class="line">  success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      windowWidth: res.windowWidth,</span><br><span class="line">      windowHeight: res.windowHeight,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h2><blockquote>
+<p>这个是最坑的一个点</p>
+</blockquote>
+<p>看UI给的样式，中间会有一段两行的文字。</p>
+<p>开始拿到的时候，觉得so easy。算了每一行的字数，截取两段就不好了嘛。 最后出来的效果确实很坑爹。有长有短，还有超过界限的。</p>
+<p>这样明显不能满足我们的需求。而之所以会造成这样的问题。就是因为我们的内容是中英文混合的，中文占两个字符长度而英文只占一个，我们根据字符串的<code>length</code>截取时，中英文都是1。<br>除非是纯英文或者纯中文，才能对齐。怎么解决呢？ 上代码！</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">getContent(detail, length = <span class="number">24</span>, row = <span class="number">2</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> len = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> index = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> content = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; len &lt; detail.length; i++) &#123;</span><br><span class="line">    <span class="comment">// 若未定义则致为 ''</span></span><br><span class="line">    <span class="keyword">if</span> (!content[index]) content[index] = <span class="string">''</span></span><br><span class="line">    content[index] += detail[i]</span><br><span class="line">    <span class="comment">// 中文或者数字占两个长度</span></span><br><span class="line">    <span class="keyword">if</span> (detail.charCodeAt(i) &gt; <span class="number">127</span> || (detail.charCodeAt(i) &gt;= <span class="number">48</span> &amp;&amp; detail.charCodeAt(i) &lt;= <span class="number">57</span>)) &#123;</span><br><span class="line">      len += <span class="number">2</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      len++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (len &gt;= length || (row - index == <span class="number">1</span> &amp;&amp; len &gt;= length - <span class="number">2</span>)) &#123;</span><br><span class="line">      len = <span class="number">0</span></span><br><span class="line">      index++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (index === row) <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> content</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以使用 <code>charCodeAt</code> 来获取 charCode，中文的话在 127以上（ps.测试的时候发现 数字也是占两个长度的）。<br>为了预防之后需求的变动 我把这块提取出来写了一个方法。之后只用传入内容，每行的字数以及行数就好。</p>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>这里有两个坑</p>
+<ol>
+<li>不能直接使用网络图片，在真机上画不出来</li>
+<li>不能圆角，图片如果是方形的 不会再处理</li>
+</ol>
+<h3 id="网络图片使用"><a href="#网络图片使用" class="headerlink" title="网络图片使用"></a>网络图片使用</h3><p>既然不能直接使用网络图片，那么我们换个思路，把图片下载到本地，在显示出来是不是就行了。</p>
+<ol>
+<li>下载网络图片</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wx.getImageInfo(&#123;</span><br><span class="line">  src: url,</span><br><span class="line">  success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 下载成功 即可获取到本地路径</span></span><br><span class="line">    <span class="built_in">console</span>.log(res.path)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>直接用这个你会发现，会出错。小程序对能下载的图片做白名单处理。即需要在 <code>小程序后台 &gt; 设置 &gt; 服务器域名 &gt; downloadFile合法域名</code> 里设置网络图片的域名。</p>
+<p>ps.因为域名要求是https的, 并且一个月只能修改五次，建议把需要下载的网络图片放在自己的https的服务器上，再走个CDN什么的。</p>
+<ol>
+<li>绘制图片</li>
+</ol>
+<p>接下来跟绘制本地图片一样<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.drawImage(res.path, left, top, width, height);</span><br></pre></td></tr></table></figure></p>
+<h3 id="图片圆角处理-（本例示范的是圆形，原理一样）"><a href="#图片圆角处理-（本例示范的是圆形，原理一样）" class="headerlink" title="图片圆角处理 （本例示范的是圆形，原理一样）"></a>图片圆角处理 （本例示范的是圆形，原理一样）</h3><p>整体思路是画一个圆形区域，再在这块区域把图片画上去，最后进行合并截取就生成了圆形图片。具体代码如下所示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">drawImage(ctx, url, left, top, width, height) &#123;</span><br><span class="line">  <span class="comment">// 保存当前环境的状态</span></span><br><span class="line">  ctx.save();</span><br><span class="line">  <span class="comment">// 起始一条路径，或重置当前路径</span></span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  <span class="comment">// 画一个圆</span></span><br><span class="line">  ctx.arc(width / <span class="number">2</span> + left, height / <span class="number">2</span> + top, width / <span class="number">2</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>, <span class="literal">false</span>);</span><br><span class="line">  <span class="comment">// 从原始画布剪切任意形状和尺寸的区域</span></span><br><span class="line">  ctx.clip();</span><br><span class="line">  wx.getImageInfo(&#123;</span><br><span class="line">    src: url,</span><br><span class="line">    success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 向画布上绘制图像</span></span><br><span class="line">      ctx.drawImage(res.path, left, top, width, height);</span><br><span class="line">      <span class="comment">// 返回之前保存过的路径状态和属性</span></span><br><span class="line">      ctx.restore();</span><br><span class="line">      <span class="comment">// 画出来</span></span><br><span class="line">      ctx.draw();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>会发现下载图片是一步异步操作，如果只是一个图片还好，如果是多个的话，就会非常的乱，我们可以用 <code>Promise</code> 优化下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">drawImage(ctx, url, left, top, width, height) &#123;</span><br><span class="line">  ctx.save();</span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  ctx.arc(width / <span class="number">2</span> + left, height / <span class="number">2</span> + top, width / <span class="number">2</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>, <span class="literal">false</span>);</span><br><span class="line">  ctx.clip();</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    wx.getImageInfo(&#123;</span><br><span class="line">      src: url,</span><br><span class="line">      success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        ctx.drawImage(res.path, left, top, width, height);</span><br><span class="line">        ctx.restore();</span><br><span class="line">        resolve()</span><br><span class="line">      &#125;,</span><br><span class="line">      fail: <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        reject(e)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h1 id="把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。"><a href="#把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。" class="headerlink" title="把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。"></a>把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。</h1><p>使用微信提供的<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/temp-file.html" target="_blank" rel="noopener">canvasToTempFilePath</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">savePic () &#123;</span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">let</span> offset_left = (<span class="keyword">this</span>.data.windowWidth - <span class="number">303</span>) / <span class="number">2</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'savePic'</span>)</span><br><span class="line">  wx.canvasToTempFilePath(&#123;</span><br><span class="line">    x: offset_left,</span><br><span class="line">    y: <span class="number">0</span>,</span><br><span class="line">    width: <span class="number">303</span>,</span><br><span class="line">    height: <span class="number">398</span>,</span><br><span class="line">    canvasId: <span class="string">'canvas'</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(res.tempFilePath)</span><br><span class="line">    &#125;,</span><br><span class="line">    fail (e) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, <span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="预览-保存图片"><a href="#预览-保存图片" class="headerlink" title="预览/保存图片"></a>预览/保存图片</h1><p>上一步我们已经把把canvas的内容保存生成图片了。继续来其实有两种方案。</p>
+<ol>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxsaveimagetophotosalbumobject" target="_blank" rel="noopener">saveImageToPhotosAlbum</a>, 把该文件保存到相册里去</li>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxpreviewimageobject" target="_blank" rel="noopener">previewImage</a>，直接预览该图片</li>
+</ol>
+<p>其实两种方法都行，可以根据实际的需求做相应的选择。</p>
+<p>我在选择的时候采用了 <code>previewImage</code>,因为这个不需要用户授权, 用户可以直接把这个图片发送给朋友 并不需要保存图片。如果想要保存图片的话，在预览的时候 也可以保存。</p>
+<h1 id="小感"><a href="#小感" class="headerlink" title="小感"></a>小感</h1><p>以前觉得看文章觉得也就那么回事，自己写的时候才发现，是多么的难产。也许还比较菜吧，继续努力。这是我在掘金上发布的第三篇文章</p>
+<p>前两篇分别如下，有需要的话 可以看看</p>
+<p><a href="https://juejin.im/post/5ae956366fb9a07aaa111037" target="_blank" rel="noopener">小程序的填坑小技巧之网络请求改造</a><br><a href="https://juejin.im/post/5add7a44f265da0b886d05f8" target="_blank" rel="noopener">移动端适配问题解决方案</a></p>
+<p>最近在写 DApp, 基于 nebulas 公链的。5月到7月两个月时间有一个激励计划，上架一个DApp 即可获得 110 NAS 约等于 6000 RMB，周大奖约为100w RMB，不过这个基本上不考虑了, 但是上架一个 DApp 也算一个不小的收入。有兴趣的小伙伴可以去注册下。<a href="https://incentive.nebulas.io/cn/signup.html?invite=pWryl" target="_blank" rel="noopener">注册链接</a></p>
+<p>刚开始一周, 本人提交了两个DApp, 遇到了一些坑吧 在本周会写一个新手教程出来，帮助大家更好的开发DApp</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+            <a href="/tags/产出/" rel="tag"># 产出</a>
+          
+            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/02/小程序的填坑小技巧之网络请求改造/" rel="next" title="小程序的填坑小技巧之网络请求改造">
+                <i class="fa fa-chevron-left"></i> 小程序的填坑小技巧之网络请求改造
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/logo.png"
+                alt="DDuke" />
+            
+              <p class="site-author-name" itemprop="name">DDuke</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初用"><span class="nav-number">2.</span> <span class="nav-text">初用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开用"><span class="nav-number">3.</span> <span class="nav-text">开用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在相应的位置画文字及图片"><span class="nav-number">4.</span> <span class="nav-text">在相应的位置画文字及图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在相应的位置"><span class="nav-number">4.1.</span> <span class="nav-text">在相应的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字"><span class="nav-number">4.2.</span> <span class="nav-text">文字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">4.3.</span> <span class="nav-text">图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络图片使用"><span class="nav-number">4.3.1.</span> <span class="nav-text">网络图片使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片圆角处理-（本例示范的是圆形，原理一样）"><span class="nav-number">4.3.2.</span> <span class="nav-text">图片圆角处理 （本例示范的是圆形，原理一样）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。"><span class="nav-number">5.</span> <span class="nav-text">把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预览-保存图片"><span class="nav-number">6.</span> <span class="nav-text">预览/保存图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小感"><span class="nav-number">7.</span> <span class="nav-text">小感</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DDuke</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.0.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.3"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
